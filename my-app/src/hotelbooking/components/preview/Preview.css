@@ -1,0 +1,18 @@
+.preview-container{
+    overflow: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.preview {
+    margin-bottom: 20px;
+}
+.preview-image {
+    border-radius: 10px;
+}
+.prevdetails {
+    color: #1A1A1A;
+    font-weight: 600;
+    margin-top: 10px;
+}

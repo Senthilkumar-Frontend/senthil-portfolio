@@ -1,0 +1,12 @@
+.header-container {
+    height: 8%;
+    width: 100%;
+    background-color: #ece5e5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.content {
+    font-size: 25px;
+    font-weight: 600;
+}
