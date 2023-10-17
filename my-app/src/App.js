@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 
 import './App.css';
 import Header from './hotelbooking/components/header/Header';
@@ -7,7 +7,14 @@ import Preview from './hotelbooking/components/preview/Preview';
 
 export default function App() {
 
-  let [ hotelList, setHotelList ] = useState();
+  let [ hotelList, setHotelList ] = useState([]);
+  let [ query, setQuery ] = useState('');
+
+  const filteredHotelList = useMemo(() => {
+    return hotelList && hotelList.filter(item => 
+       item.name.toLowerCase().includes(query.toLowerCase()) 
+    )
+  }, [ query, hotelList ])
 
   useEffect(() => {
     let getHotelList = async () => {
@@ -23,16 +30,20 @@ export default function App() {
     getHotelList();
   }, [])
 
+  const handleInput = (currInputValue) => {
+    setQuery(currInputValue);
+  }
+
   return (
     <div className="App">
       <Header content={'Hotel Rooms Booking'} />
 
       <section className="section-container">
         <div className="hotel-search">
-          <Input placeHolder='search hotel...' />
+          <Input placeHolder='search hotel...' inputHandler={handleInput} />
         </div>
         <div className="hotelpreview-section">
-          { hotelList && <Preview previewData={hotelList} /> }
+          { hotelList && <Preview previewData={filteredHotelList} /> }
         </div>
       </section>
     </div>
