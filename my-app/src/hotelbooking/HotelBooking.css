@@ -2,10 +2,9 @@ body {
     margin: 0px;
     padding: 0px;
 }
-.App {
-    height: calc(100vh);
+.hotelbooking {
+    height: 100%;
     width: 100%;
-    position: fixed;
 }
 .section-container {
     width: 100%;

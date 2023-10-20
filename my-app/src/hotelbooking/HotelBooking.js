@@ -1,9 +1,9 @@
 import { useState, useEffect, useMemo } from 'react';
 
 import './HotelBooking.css';
-import Header from './hotelbooking/components/header/Header';
-import Input from './hotelbooking/components/input/Input';
-import Preview from './hotelbooking/components/preview/Preview';
+import Header from './components/header/Header';
+import Input from './components/input/Input';
+import Preview from './components/preview/Preview';
 
 export default function HotelBooking() {
 
