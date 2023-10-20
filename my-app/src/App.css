@@ -7,20 +7,3 @@ body {
     width: 100%;
     position: fixed;
 }
-.section-container {
-    width: 100%;
-    height: 92%;
-}
-.hotel-search {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    margin-left: 60px;
-    margin-top: 30px;
-    height: 10%;
-}
-.hotelpreview-section {
-    height: 90%;
-    overflow: auto;
-    margin-top: 30px;
-}
