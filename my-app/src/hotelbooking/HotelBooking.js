@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import './HotelBooking.css';
 import Header from './components/header/Header';
@@ -9,6 +10,7 @@ export default function HotelBooking() {
 
   let [ hotelList, setHotelList ] = useState([]);
   let [ query, setQuery ] = useState('');
+  const navigate = useNavigate();
 
   const filteredHotelList = useMemo(() => {
     return hotelList && hotelList.filter(item => 
@@ -34,6 +36,10 @@ export default function HotelBooking() {
     setQuery(currInputValue);
   }
 
+  const hotelPreviewHandling = (hotelData) => {
+    navigate(`/hotel/${hotelData.id}`);
+  }
+
   return (
     <div className="hotelbooking">
       <Header content={'Hotel Rooms Booking'} />
@@ -43,7 +49,7 @@ export default function HotelBooking() {
           <Input placeHolder='search hotel...' inputHandler={handleInput} />
         </div>
         <div className="hotelpreview-section">
-          { hotelList && <Preview previewData={filteredHotelList} /> }
+          { hotelList && <Preview previewData={filteredHotelList} previewClickHandler={hotelPreviewHandling} /> }
         </div>
       </section>
     </div>
