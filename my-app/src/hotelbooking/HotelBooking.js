@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, createContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import './HotelBooking.css';
@@ -6,7 +6,10 @@ import Header from './components/header/Header';
 import Input from './components/input/Input';
 import Preview from './components/preview/Preview';
 
+export const TestContext = createContext();
+
 export default function HotelBooking() {
+
 
   let [ hotelList, setHotelList ] = useState([]);
   let [ query, setQuery ] = useState('');
@@ -41,17 +44,21 @@ export default function HotelBooking() {
   }
 
   return (
-    <div className="hotelbooking">
-      <Header content={'Hotel Rooms Booking'} />
-
-      <section className="section-container">
-        <div className="hotel-search">
-          <Input placeHolder='search hotel...' inputHandler={handleInput} />
-        </div>
-        <div className="hotelpreview-section">
-          { hotelList && <Preview previewData={filteredHotelList} previewClickHandler={hotelPreviewHandling} /> }
-        </div>
-      </section>
-    </div>
+    <TestContext.Provider value={hotelList}>
+      <div className="hotelbooking">
+        { !hotelList.length ? (<div className='loader'>Please push back and sit, Your Coffee is preparing...</div>) : (
+        <>
+          <Header content={'Hotel Rooms Booking'} />
+          <section className="section-container">
+            <div className="hotel-search">
+              <Input placeHolder='search hotel...' inputHandler={handleInput} />
+            </div>
+            <div className="hotelpreview-section">
+              { hotelList && <Preview previewData={filteredHotelList} previewClickHandler={hotelPreviewHandling} /> }
+            </div>
+          </section>
+        </>)}
+      </div>
+    </TestContext.Provider>
   );
 }
