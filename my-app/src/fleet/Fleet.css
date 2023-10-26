@@ -1,0 +1,39 @@
+.fleet-color-set {
+    height: 100%;
+    width: 100%;
+}
+.fleet-header {
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 25px;
+    font-weight: 600;
+}
+.input-section-cntr {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.input-sec {
+    font-size: 16px;
+    outline: none;
+}
+.color-codes {
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.colorboxes {
+    height: 100px;
+    width: 120px;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.hex-content {
+    font-size: 17px;
+    color: white;
+}
