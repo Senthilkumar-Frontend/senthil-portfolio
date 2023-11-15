@@ -1,5 +1,9 @@
 import axios from "axios";
 
+import { useDispatch, useSelector } from 'react-redux';
+
+import { setHotelList } from '../redux/hoteldetailsstore';
+
 import { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -12,9 +16,12 @@ import Preview from './components/preview/Preview';
 
 export default function HotelBooking() {
 
+  let dispatch = useDispatch();
 
-  let [ hotelList, setHotelList ] = useState([]);
+  let { hotelList } = useSelector(state => state.hotelDetails)
+
   let [ query, setQuery ] = useState('');
+  
   const navigate = useNavigate();
 
   const filteredHotelList = useMemo(() => {
@@ -28,7 +35,8 @@ export default function HotelBooking() {
       try {
         const response = await axios.get('https://mocki.io/v1/4775a500-cf31-4bee-8a65-0c849b6e4d0c')
         const result = await response.data;
-        setHotelList(result);
+        dispatch(setHotelList(result));
+
       } catch(err) {
         console.log(err)
       }
